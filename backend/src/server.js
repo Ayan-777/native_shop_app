@@ -3,6 +3,7 @@ import path from "path";
 import ENV from "./config/env.js";
 const app = express();
 
+
 const __dirname = path.resolve();
 
 app.get('/api/check',(req, res) => {
@@ -18,6 +19,7 @@ if(ENV.NODE_ENV === "production"){
     });
 }
 
+
 app.listen(ENV.PORT, () => {
-    console.log(`Sarver is runing on ${"http://localhost:8000"} .....`)
+    console.log(`Sarver is running on ${"http://localhost:8000"} .....`)
 })
