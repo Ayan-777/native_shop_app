@@ -21,5 +21,5 @@ if(ENV.NODE_ENV === "production"){
 
 
 app.listen(ENV.PORT, () => {
-    console.log(`Sarver is running on ${"http://localhost:8000"} .....`)
+    console.log(`Server is running on ${"http://localhost:8000"} .....`)
 })
