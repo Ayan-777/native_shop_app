@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import { fileURLToPath } from "url";
 import { clerkMiddleware } from '@clerk/express'
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
@@ -9,7 +10,9 @@ import { functions,inngest } from "./config/inngest.js";
 const app = express();
 app.use(express.json());
 
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 app.use(clerkMiddleware());
 
@@ -21,17 +24,22 @@ app.get('/api/check',(req, res) => {
 
 // app ready for deployment
 if(ENV.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname, "../admin/dist")));
+    const distPath =path.resolve(__dirname, "../../admin/dist");
     
-    app.get("/{*any}", (req, res) => {
-        res.sendFile(path.join(__dirname, "../admin", "dist", "index.html"));
+    app.use(express.static(distPath))
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(distPath, "index.html"));
     });
 }
 
 const startServer = async () => {
     await connectDB();
-    app.listen(ENV.PORT, () => {
-        console.log("http://localhost:8000")
+
+    const PORT = process.env.PORT || ENV.PORT || 8000;
+
+    app.listen(PORT, "0.0.0.0", () => {
+        console.log(`Server listening on port ${PORT}`)
     });
 };
 
