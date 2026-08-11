@@ -33,14 +33,20 @@ if(ENV.NODE_ENV === "production"){
     });
 }
 
-const startServer = async () => {
-    await connectDB();
+const startServer = async () => {;
 
     const PORT = process.env.PORT || ENV.PORT || 8000;
 
     app.listen(PORT, "0.0.0.0", () => {
         console.log(`Server listening on port ${PORT}`)
     });
+
+    try {
+        await connectDB();
+        console.log("MongoDB Connected Successfully");
+    } catch (error) {
+        console.error("MongoDB Connection Error:", error.message);
+    }
 };
 
 startServer();
