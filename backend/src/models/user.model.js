@@ -1,4 +1,3 @@
-import { PhoneNumber } from "@clerk/express";
 import mongoose from "mongoose";
 
 const addressSchema = new mongoose.Schema({
