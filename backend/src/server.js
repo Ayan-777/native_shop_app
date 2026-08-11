@@ -3,12 +3,17 @@ import path from "path";
 import { clerkMiddleware } from '@clerk/express'
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
-const app = express();
+import { serve } from "inngest/express"
+import { functions,inngest } from "./config/inngest.js";
 
+const app = express();
+app.use(express.json());
 
 const __dirname = path.resolve();
 
 app.use(clerkMiddleware());
+
+app.use("/api/inngest", serve({client: inngest, functions}));
 
 app.get('/api/check',(req, res) => {
     res.status(200).json({message : "Success"})
