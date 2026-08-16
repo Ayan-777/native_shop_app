@@ -11,3 +11,11 @@ The project is structured into three main parts:
 📱 Mobile — User-facing shopping application
 ⚙️ Backend — Handles the application's server-side logic and APIs
 🛠️ Admin — Provides functionality for managing the shopping platform
+
+📂 Project Structure
+native_shop_app/
+├── admin/       # Admin panel
+├── backend/     # Backend and API
+├── mobile/      # Mobile application
+├── package.json
+└── README.md
