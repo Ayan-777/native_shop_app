@@ -19,3 +19,14 @@ native_shop_app/
 ├── mobile/      # Mobile application
 ├── package.json
 └── README.md
+
+🛠️ Tech Stack
+
+The project currently uses technologies including:
+
+TypeScript
+JavaScript
+CSS
+HTML
+Node.js
+Backend APIs
