@@ -6,7 +6,7 @@ import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
 import { serve } from "inngest/express"
 import { functions,inngest } from "./config/inngest.js";
-
+import { Product } from "../models/product.model.js"
 
 import adminRoutes from "./routes/admin.route.js"
 import userRoutes from "./routes/user.route.js"
